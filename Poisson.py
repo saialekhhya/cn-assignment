@@ -3,29 +3,21 @@ import scipy.stats
 import matplotlib.pyplot as plt
 
 
-def plotPoisson():
+def plotPoisson(length, width, numNodes, numDeadNodes=0):
     # Window parameters
     xMin = -500
-    xMax = 500
     yMin = -500
-    yMax = 500
 
     # Dimensions
-    xDel = xMax-xMin
-    yDel = yMax-yMin
+    xDel = length
+    yDel = width
     totarea = xDel*yDel
 
-    # Intensity of the Poisson process
-    lambda0 = 200
-
-    # Number of Nodes
-    numbPoints = 100
-
     # X coordinates of Poisson points
-    x = xDel*scipy.stats.uniform.rvs(0, 1, ((numbPoints, 1)))+xMin
+    x = xDel*scipy.stats.uniform.rvs(0, 1, ((numNodes, 1)))+xMin
 
     # Y coordinates of Poisson points
-    y = yDel*scipy.stats.uniform.rvs(0, 1, ((numbPoints, 1)))+yMin
+    y = yDel*scipy.stats.uniform.rvs(0, 1, ((numNodes, 1)))+yMin
 
     # Plotting
     plt.scatter(x, y, edgecolor='blue', facecolor='cyan', alpha=0.75)
